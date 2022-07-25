@@ -7,6 +7,7 @@ const UserPage = () => {
     const { userId } = useParams()
     const user = useSelector(state => selectUserById(state, Number(userId)))
 
+    // it's the memoized selector. and we need to pass 2 parameters 
     const postsForUser = useSelector(state => selectPostsByUser(state, Number(userId)))
 
     const postTitles = postsForUser.map(post => (

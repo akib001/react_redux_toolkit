@@ -9,6 +9,7 @@ const EditPostForm = () => {
     const { postId } = useParams()
     const navigate = useNavigate()
 
+    // passed 2nd arguments postId
     const post = useSelector((state) => selectPostById(state, Number(postId)))
     const users = useSelector(selectAllUsers)
 

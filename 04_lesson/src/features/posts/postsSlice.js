@@ -10,11 +10,13 @@ const initialState = {
     error: null
 }
 
+// 1st argument is just lebel
 export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
     const response = await axios.get(POSTS_URL)
     return response.data
 })
 
+// initialPost is the argument passed by dispatch fn
 export const addNewPost = createAsyncThunk('posts/addNewPost', async (initialPost) => {
     const response = await axios.post(POSTS_URL, initialPost)
     return response.data
@@ -50,6 +52,7 @@ const postsSlice = createSlice({
             reducer(state, action) {
                 state.posts.push(action.payload)
             },
+             // Prepare payload data and format it and customize it for reducer
             prepare(title, content, userId) {
                 return {
                     payload: {
@@ -77,6 +80,7 @@ const postsSlice = createSlice({
             }
         }
     },
+    // it works for createAsyncThunk by case
     extraReducers(builder) {
         builder
             .addCase(fetchPosts.pending, (state, action) => {
@@ -147,6 +151,7 @@ export const selectAllPosts = (state) => state.posts.posts;
 export const getPostsStatus = (state) => state.posts.status;
 export const getPostsError = (state) => state.posts.error;
 
+// this selector received 2 arguments
 export const selectPostById = (state, postId) =>
     state.posts.posts.find(post => post.id === postId);
 

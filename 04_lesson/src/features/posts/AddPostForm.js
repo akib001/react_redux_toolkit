@@ -28,6 +28,7 @@ const AddPostForm = () => {
         if (canSave) {
             try {
                 setAddRequestStatus('pending')
+                // unwrap => can be called to extract the payload of a fulfilled action or to throw either the error or, if available, payload created by rejectWithValue from a rejected action
                 dispatch(addNewPost({ title, body: content, userId })).unwrap()
 
                 setTitle('')

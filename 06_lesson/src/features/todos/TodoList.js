@@ -11,6 +11,7 @@ import { useState } from "react"
 const TodoList = () => {
     const [newTodo, setNewTodo] = useState('')
 
+    // we are getting this from the hook 
     const {
         data: todos,
         isLoading,
@@ -18,6 +19,8 @@ const TodoList = () => {
         isError,
         error
     } = useGetTodosQuery()
+
+    // we are just getting the fn's from the hook
     const [addTodo] = useAddTodoMutation()
     const [updateTodo] = useUpdateTodoMutation()
     const [deleteTodo] = useDeleteTodoMutation()

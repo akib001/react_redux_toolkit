@@ -73,6 +73,7 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
                     }
                 }
             }),
+            // for mutation use invalidatesTags
             invalidatesTags: [
                 { type: 'Post', id: "LIST" }
             ]
